@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Rami Reddy CH - Portfolio</title>
+    <style>
+        :root {
+            --primary: #0066ff;
+            --secondary: #00d4ff;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --accent: #ff0066;
+            --gray: #666666;
+            --light-gray: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container_1 {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            text-align: center;
+            z-index: 3;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+        
+        .name-highlight {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        .title {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .contact-item:hover {
+            color: var(--secondary);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+            text-decoration: none;
+            position: relative;
+            z-index: 3;
+            margin-bottom: 8px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.4);
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: var(--light);
+        }
+        
+        .section-title span {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+        }
+        
+        .summary {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light);
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        .education, .experience, .projects, .skills, .achievements {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .item-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .item-subtitle {
+            font-size: 1.2rem;
+            color: var(--light);
+            opacity: 0.8;
+        }
+        
+        .item-period {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .item-description {
+            margin-bottom: 20px;
+            color: var(--light);
+            opacity: 0.9;
+        }
+        
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-bullet {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: var(--light);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+            }
+            
+            .item-period {
+                margin-top: 10px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="container_1">
+                    <div class="header-content">
+                        <h1><span class="name-highlight">Venkata Rami Reddy CH</span></h1>
+                        <span class="title subtitle">Programme Analyst Trainee | B.E. Computer Science</span>
+                        <p class="subtitle">Expertise in Web Development, Cloud Technologies & AI Solutions</p>
+                        <div class="contact-info">
+                            <a href="mailto:connectwithvenkatram@gmail.com" class="contact-item" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                Mail
+                            </a>
+                            <a href="tel:+91-8074978091" class="contact-item" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 17.41 17.41 0 0 1-13-13 2 2 0 0 1 1.8-2h3.08a1.99 1.99 0 0 1 1.41 2.95A13.01 13.01 0 0 1 12 15.01a13.01 13.01 0 0 1-1.27 3.56A1.99 1.99 0 0 1 9.24 20H6.18a2 2 0 0 1-2-2V7.82a2 2 0 0 1 2-2h2.08a1.99 1.99 0 0 1 1.41 2.95A13.01 13.01 0 0 1 12 9.01a13.01 13.01 0 0 1 1.27 3.56A1.99 1.99 0 0 1 12.76 15H15.82a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Phone
+                            </a>
+                            <a href="https://www.linkedin.com/in/venkatram04/" class="contact-item" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/venkatram04" class="contact-item" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.46"></path>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="https://leetcode.com/u/codewithram04/" class="contact-item" target="_blank">
+                                <img src="https://img.icons8.com/?size=100&id=dc6kdToG53HN&format=png&color=FFFFFF" alt="LeetCode" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                LeetCode
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.46"></path>
+                            </a>
+                            <a href="https://www.geeksforgeeks.org/user/codewithram04/" class="contact-item" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
+                                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M29.035,24c-0.021,-0.329 -0.035,-0.661 -0.035,-1c0,-6.08 2.86,-10 7,-10c3.411,0 6.33,2.662 7,7h2l0.001,-9h-2.001c0,0 -0.533,1.506 -1,1.16c-1.899,-1.066 -3.723,-1.132 -6.024,-1.132c-5.8,0 -10.976,5.232 -10.976,11.892c0,0.364 0.021,0.723 0.049,1.08h-2.099c0.029,-0.357 0.05,-0.716 0.05,-1.08c0,-6.66 -5.176,-11.892 -10.976,-11.892c-2.301,0 -4.125,0.065 -6.024,1.132c-0.467,0.346 -1,-1.16 -1,-1.16h-2.001l0.001,9h2c0.67,-4.338 3.589,-7 7,-7c4.14,0 7,3.92 7,10c0,0.339 -0.014,0.671 -0.035,1h-18.965v2h1.009c1.083,0 1.977,0.861 1.999,1.943c0.038,1.846 0.216,4.063 0.992,5.057c1.269,1.625 3,3 8,3c5.022,0 9.92,-4.527 11,-10h2c1.08,5.473 5.978,10 11,10c5,0 6.731,-1.375 8,-3c0.776,-0.994 0.954,-3.211 0.992,-5.057c0.022,-1.082 0.917,-1.943 1.999,-1.943h1.009v-2zM11.477,33.73c-1.605,0 -4.155,-0.006 -4.477,-1.73c-0.109,-0.583 -0.091,-2.527 -0.057,-4.046c0.025,-1.087 0.912,-1.954 2,-1.954h10.057c-0.794,4.781 -3.985,7.73 -7.523,7.73zM41,32c-0.322,1.724 -2.872,1.73 -4.477,1.73c-3.537,0 -6.729,-2.949 -7.523,-7.73h10.057c1.088,0 1.975,0.867 2,1.954c0.034,1.519 0.052,3.463 -0.057,4.046z"></path></g></g>
+                                </svg>
+                                GeeksforGeeks
+                            </a>
+                        </div>
+                        <a href="#projects" class="cta-button">View My Work</a>
+                        <a href="#contact" class="cta-button">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="particles"></div>
+    </header>
+    
+    <section id="about">
+        <div class="container_1">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-image d-md-none">
+                <img src="https://github.com/venkatram04/online-ticket-reservation/blob/main/Designer.jpeg?raw=true" alt="Venkata Rami Reddy" class="profile-img">
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="summary">
+                        Passionate B.E. Computer Science Engineering student at Sathyabama Institute of Science and Technology, Chennai, currently working at Cognizant as Programme Analyst Trainee. Dedicated to excellence in the IT industry with expertise in modern web technologies, cloud solutions, and artificial intelligence. Committed to continuous learning and innovation in technology.
+                    </p>
+                    <div class="education">
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <h3 class="item-title">Bachelor of Engineering - Computer Science</h3>
+                                    <p class="item-subtitle">Sathyabama Institute of Science and Technology, Chennai</p>
+                                </div>
+                                <span class="item-period">Aug 2021 – May 2025</span>
+                            </div>
+                            <p class="item-description">CGPA: 8.19/10</p>
+                        </div>
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <h3 class="item-title">Higher Secondary Education</h3>
+                                    <p class="item-subtitle">Sri Chaitanya Jr. College, Guntur</p>
+                                </div>
+                                <span class="item-period">Jun 2019 – May 2021</span>
+                            </div>
+                            <p class="item-description">Percentage: 88.3%</p>
+                        </div>
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <h3 class="item-title">Secondary School Certificate</h3>
+                                    <p class="item-subtitle">Sri Guru Raja E.M High School, Nandyal</p>
+                                </div>
+                                <span class="item-period">Jun 2018 – May 2019</span>
+                            </div>
+                            <p class="item-description">CGPA: 9.7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image d-none d-md-block">
+                    <img src="https://github.com/venkatram04/online-ticket-reservation/blob/main/Designer.jpeg?raw=true" alt="Venkata Rami Reddy" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container_1">
+            <h2 class="section-title">Work <span>Experience</span></h2>
+            <div class="experience">
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-title">Programme Analyst Trainee</h3>
+                            <p class="item-subtitle">Cognizant</p>
+                        </div>
+                        <span class="item-period">June 2025 - Current</span>
+                        
+                    </div>
+                    <p class="item-description">Currently contributing to software development projects with a focus on quality and efficiency.</p>
+                    <div class="technologies">
+                        <span class="tech-tag">ASP.NET WEB API</span>
+                        <span class="tech-tag">React JS</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">MS-SQL</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <h3 class="item-title">Project Intern</h3>
+                            <p class="item-subtitle">HCL Technologies, Chennai</p>
+                        </div>
+                        <span class="item-period">Jan 2024 – Mar 2024</span>
+                    </div>
+                    <p class="item-description">Developed an Online Ticket Reservation System, improving software development skills by 70% and ensuring 100% on-time project completion. Streamlined workflows to balance priorities without compromising quality.</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container_1">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <div class="projects">
+                <div class="item">
+                    <div class="item-header">
+                        <h3 class="item-title">Online Property Rental Management System</h3>
+                        <span class="item-period">Oct 2025</span>
+                    </div>
+                    <p class="item-description">Designed and developed a rental platform with Owner and Tenant roles, enabling property posting, lease finalization, and secure payment workflows aligned with business logic. Integrated backend DTOs with React UI for instant feedback, basket/order state sync, and full validation by stored procedures.</p>
+                    <div class="technologies">
+                        <span class="tech-tag">ASP.NET WEB API</span>
+                        <span class="tech-tag">React JS</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">MS-SQL</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <h3 class="item-title">Discipline Forum</h3>
+                        <span class="item-period">Jan 2025</span>
+                    </div>
+                    <p class="item-description">Designed and developed a website to make student discipline tracking easier in real-time, contributing to college administration efficiency.</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <h3 class="item-title">Online Ticket Reservation System</h3>
+                        <span class="item-period">Apr 2024</span>
+                    </div>
+                    <p class="item-description">Designed and developed a user-friendly ticket reservation system with a simple UI for easy navigation, enhancing user experience and ensuring quick booking processes.</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container_1">
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="skill-title">Languages</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> C++</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Python</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> C#</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Developer Tools</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> VS Code</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> GitHub</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Frameworks</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> Node.JS</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> React.JS</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Angular.JS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Cloud & Databases</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> MySQL</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> AWS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> Problem Solving</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Communication</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Teamwork</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Leadership</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Adaptability</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Areas of Interest</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item"><span class="skill-bullet">•</span> Web Development</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> DSA</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> AI</li>
+                        <li class="skill-item"><span class="skill-bullet">•</span> Cloud Technologies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="achievements">
+        <div class="container_1">
+            <h2 class="section-title">Achievements <span>& Certifications</span></h2>
+            <div class="achievements">
+                <div class="achievement-item">
+                    <h3 style="color: var(--secondary); margin-bottom: 10px;">Vibe Code Hackathon - Vibe Coded using Gemini Code Assist</h3>
+                    <p style="opacity: 0.8;">2025</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 style="color: var(--secondary); margin-bottom: 10px;">NPTEL Certification – Data Science with Python</h3>
+                    <p style="opacity: 0.8;">2021</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 style="color: var(--secondary); margin-bottom: 10px;">Competitive Programming Milestone</h3>
+                    <p style="opacity: 0.8;">2021 - Current</p>
+                    <p style="opacity: 0.8;">Solved 260+ problems on LeetCode and 190+ on GeeksforGeeks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container_1">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; opacity: 0.8;">
+                I'm always interested in new opportunities and exciting projects. Let's connect and discuss how we can work together.
+            </p>
+            <div style="text-align: center;">
+                <a href="mailto:connectwithvenkatram@gmail.com" class="cta-button">Send Email</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container_1">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/venkatram04/" class="social-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:connectwithvenkatram@gmail.com" class="social-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://github.com/venkatram04" class="social-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.46"></path>
+                    </svg>
+                </a>
+                <a href="https://leetcode.com/u/codewithram04/" class="social-link" target="_blank">
+                    <img src="https://img.icons8.com/?size=100&id=dc6kdToG53HN&format=png&color=FFFFFF" alt="LeetCode" width="24" height="24" />
+                </a>
+                <a href="https://www.geeksforgeeks.org/user/codewithram04/" class="social-link" target="_blank" aria-label="GeeksforGeeks">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="38" height="40" viewBox="0,0,256,256">
+                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M29.035,24c-0.021,-0.329 -0.035,-0.661 -0.035,-1c0,-6.08 2.86,-10 7,-10c3.411,0 6.33,2.662 7,7h2l0.001,-9h-2.001c0,0 -0.533,1.506 -1,1.16c-1.899,-1.066 -3.723,-1.132 -6.024,-1.132c-5.8,0 -10.976,5.232 -10.976,11.892c0,0.364 0.021,0.723 0.049,1.08h-2.099c0.029,-0.357 0.05,-0.716 0.05,-1.08c0,-6.66 -5.176,-11.892 -10.976,-11.892c-2.301,0 -4.125,0.065 -6.024,1.132c-0.467,0.346 -1,-1.16 -1,-1.16h-2.001l0.001,9h2c0.67,-4.338 3.589,-7 7,-7c4.14,0 7,3.92 7,10c0,0.339 -0.014,0.671 -0.035,1h-18.965v2h1.009c1.083,0 1.977,0.861 1.999,1.943c0.038,1.846 0.216,4.063 0.992,5.057c1.269,1.625 3,3 8,3c5.022,0 9.92,-4.527 11,-10h2c1.08,5.473 5.978,10 11,10c5,0 6.731,-1.375 8,-3c0.776,-0.994 0.954,-3.211 0.992,-5.057c0.022,-1.082 0.917,-1.943 1.999,-1.943h1.009v-2zM11.477,33.73c-1.605,0 -4.155,-0.006 -4.477,-1.73c-0.109,-0.583 -0.091,-2.527 -0.057,-4.046c0.025,-1.087 0.912,-1.954 2,-1.954h10.057c-0.794,4.781 -3.985,7.73 -7.523,7.73zM41,32c-0.322,1.724 -2.872,1.73 -4.477,1.73c-3.537,0 -6.729,-2.949 -7.523,-7.73h10.057c1.088,0 1.975,0.867 2,1.954c0.034,1.519 0.052,3.463 -0.057,4.046z"></path></g></g>
+                    </svg>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Venkata Rami Reddy CH. Crafted with precision and passion, All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 2;
+                const xPos = Math.random() * 100;
+                const yPos = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 10;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${xPos}%`;
+                particle.style.top = `${yPos}%`;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                // Add keyframes dynamically
+                const keyframes = `
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+                        25% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+                        50% { transform: translateY(-40px) translateX(-10px); opacity: 0.8; }
+                        75% { transform: translateY(-20px) translateX(-20px); opacity: 0.6; }
+                    }
+                `;
+                
+                const styleSheet = document.createElement('style');
+                styleSheet.textContent = keyframes;
+                document.head.appendChild(styleSheet);
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.item, .achievement-item, .skill-category');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animation
+            document.querySelectorAll('.item, .achievement-item, .skill-category').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Call once on load
+        });
+    </script>
+  </body>
+</html>
